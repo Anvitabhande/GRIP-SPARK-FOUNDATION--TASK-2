@@ -1,0 +1,53 @@
+const balanceElement = document.getElementById('balance');
+const depositButton = document.getElementById('depositButton');
+const withdrawButton = document.getElementById('withdrawButton');
+const transactionHistory = document.getElementById('transactionHistory');
+
+let balance = 1000;
+let transactions = [];
+
+function updateBalance() {
+    balanceElement.textContent = balance;
+}
+
+function updateTransactionHistory() {
+    transactionHistory.innerHTML = '';
+    transactions.forEach(transaction => {
+        const listItem = document.createElement('li');
+        listItem.textContent = transaction;
+        transactionHistory.appendChild(listItem);
+    });
+}
+
+function deposit() {
+    const amount = parseFloat(prompt('Enter deposit amount:'));
+    if (isNaN(amount) || amount <= 0) {
+        alert('Invalid amount');
+        return;
+    }
+    balance += amount;
+    transactions.push(`Deposited $${amount}`);
+    updateBalance();
+    updateTransactionHistory();
+}
+
+function withdraw() {
+    const amount = parseFloat(prompt('Enter withdrawal amount:'));
+    if (isNaN(amount) || amount <= 0) {
+        alert('Invalid amount');
+        return;
+    }
+    if (amount > balance) {
+        alert('Insufficient funds');
+        return;
+    }
+    balance -= amount;
+    transactions.push(`Withdrawn $${amount}`);
+    updateBalance();
+    updateTransactionHistory();
+}
+
+depositButton.addEventListener('click', deposit);
+withdrawButton.addEventListener('click', withdraw);
+
+updateBalance();

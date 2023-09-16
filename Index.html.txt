@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Banking App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Basic Banking App</h1>
+    </header>
+    <main>
+        <div class="account">
+            <h2>Your Account</h2>
+            <p>Balance: $<span id="balance">1000</span></p>
+            <button id="depositButton">Deposit</button>
+            <button id="withdrawButton">Withdraw</button>
+        </div>
+        <div class="transaction">
+            <h2>Transaction History</h2>
+            <ul id="transactionHistory"></ul>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
